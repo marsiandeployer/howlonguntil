@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "at": "2026-10-21T12:09:51.673Z",
+  "browser": "Chrome/155.0.8059.39",
+  "checks": [
+    {
+      "name": "fresh installation has no website access"
+    },
+    {
+      "name": "page remains untouched before opt-in"
+    },
+    {
+      "name": "functional fixture uses byte-identical JS with test-only pre-granted hosts"
+    },
+    {
+      "name": "real content script detects supported formats and inline-split text; skips excluded content",
+      "count": 5
+    },
+    {
+      "name": "actual pointer hover opens live countdown tooltip"
+    },
+    {
+      "name": "original text, inline markup and link handlers are preserved"
+    },
+    {
+      "name": "dynamic insertions and changed time text update highlights"
+    },
+    {
+      "name": "actual popup per-site switch removes current-page highlights"
+    },
+    {
+      "name": "global disable unregisters scripts and removes existing highlights"
+    },
+    {
+      "name": "re-enable registers exactly once without duplicate content injection"
+    },
+    {
+      "name": "large page retains 5000 paragraphs and detects all 100 times",
+      "scanElapsedMs": 3264,
+      "popupEvents": 50
+    },
+    {
+      "name": "only preferences are persisted; scanned page content stays in memory"
+    },
+    {
+      "name": "no external network requests or page errors observed",
+      "observedRequests": 8
+    }
+  ],
+  "limitations": [
+    "Production manifest default/no-access state is verified. Native optional-permission accept/cancel dialog UI is not automated; functional UI/content checks use byte-identical JS and a separate test-only manifest with pre-granted hosts. Permission removal is covered by unit tests."
+  ],
+  "productionManifest": "1.0.0"
+}

@@ -1,0 +1,12 @@
+Use case: ads-marketing
+Asset type: promotional concept artwork for a browser extension store listing, not a product screenshot.
+Primary request: Create concept 03, a bold typographic lime-and-black poster with graphic economy, proving the time-highlighter capability through a short excerpt.
+Scene/backdrop: Flat graphic poster field, full bleed.
+Subject: Oversized editorial typography where the excerpt and underlined event time dominate.
+Style/medium: Bold typographic poster, disciplined geometric shapes, minimal and high contrast.
+Composition/framing: Exact 1280x800 pixels, landscape 8:5 aspect ratio, full bleed. Tight graphic composition with giant heading and excerpt as the main structure; hover card is a sharply composed compact block near the marked time. Preserve generous contrast and large readable text.
+Lighting/mood: Energetic, direct, confident.
+Color palette: Electric lime, nearly black, warm white; no gradients.
+Text (verbatim): Main heading "How Long Until"; excerpt "Doors open at 18:00 UTC"; underline only "18:00 UTC" in a clear lime treatment; hover card text "In 2h 15m" and "21:00 your time"; small supporting copy "Hover a time. See what’s left."
+Constraints: Show only these real capabilities: the page time “18:00 UTC” is underlined and a hover card says “In 2h 15m” and “21:00 your time”. This is illustrative of a viewer in UTC+3. This is promotional concept artwork, not an actual product screenshot. Reminders are not functioning.
+Avoid: Google or Gmail logo, recognizable competitor branding, Chrome seals, ratings, fabricated endorsements, prices, security guarantees, fake features, reminders presented as working, decorative world clocks, dashboards, fake controls, extra text, misspellings, watermark.

@@ -1,0 +1,21 @@
+{
+  "name": "howlonguntil",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Local-first time highlighter and live event countdown for Chrome.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.js",
+    "test:browser": "node scripts/browser-qa.mjs",
+    "check:package": "node scripts/check-package.mjs"
+  },
+  "dependencies": {
+    "@js-temporal/polyfill": "0.5.1"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "puppeteer-core": "25.15.0"
+  },
+  "license": "MIT"
+}

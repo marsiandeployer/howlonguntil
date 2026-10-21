@@ -1,0 +1,7 @@
+::highlight(hlu-event-time) {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-color: #8062b8;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.16em;
+}

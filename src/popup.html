@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>How Long Until</title>
+  <link rel="stylesheet" href="popup.css">
+  <script type="module" src="popup.js"></script>
+</head>
+<body>
+  <main class="popup" aria-labelledby="title">
+    <header class="topline">
+      <div>
+        <h1 id="title">How long until</h1>
+      </div>
+      <span id="active-mark" class="active-mark" aria-hidden="true"></span>
+    </header>
+
+    <section class="enable-section" aria-labelledby="enable-label">
+      <div class="enable-copy">
+        <h2 id="enable-label">Highlight event times</h2>
+        <p id="enable-description">Find time-zone references as you browse.</p>
+      </div>
+      <button id="enable-toggle" class="switch" type="button" role="switch" aria-checked="false" aria-describedby="enable-description">
+        <span class="switch-thumb"></span><span class="sr-only">Enable highlighting</span>
+      </button>
+    </section>
+
+    <div id="permission-note" class="notice" role="status" hidden></div>
+
+    <section class="site-section" aria-label="This website">
+      <div class="site-copy">
+        <span class="section-label">THIS SITE</span>
+        <span id="site-label" class="site-label">Checking page…</span>
+      </div>
+      <button id="site-toggle" class="small-switch" type="button" role="switch" aria-checked="false" aria-label="Highlight times on this site" disabled>
+        <span class="switch-thumb"></span>
+      </button>
+    </section>
+
+    <section class="events-section" aria-labelledby="events-heading">
+      <div class="section-heading">
+        <h2 id="events-heading">Detected times</h2>
+        <span id="event-count" class="count" aria-live="polite"></span>
+      </div>
+      <p id="event-state" class="event-state" role="status">Checking this page…</p>
+      <ol id="event-list" class="event-list" aria-label="Detected event times"></ol>
+    </section>
+
+    <details class="preferences" id="preferences">
+      <summary>Preferences</summary>
+      <div class="preferences-body">
+        <label class="field-label" for="timezone">Show times in</label>
+        <input id="timezone" class="text-input" type="text" list="timezones" autocomplete="off" spellcheck="false" aria-describedby="timezone-help">
+        <datalist id="timezones"></datalist>
+        <span id="timezone-help" class="field-help">Type “system” or an IANA time zone, such as Europe/London.</span>
+        <label class="check-row" for="hour12"><input id="hour12" type="checkbox"><span>Use 12-hour time</span></label>
+        <div class="override-heading">
+          <span class="field-label">Abbreviation defaults</span>
+          <span class="field-help">Fixed offset (±HH:MM) or IANA zone</span>
+        </div>
+        <div class="override-grid">
+          <label for="override-cst">CST<input id="override-cst" class="text-input override-input" type="text" maxlength="40" autocomplete="off" aria-label="CST time zone override"></label>
+          <label for="override-ist">IST<input id="override-ist" class="text-input override-input" type="text" maxlength="40" autocomplete="off" aria-label="IST time zone override"></label>
+          <label for="override-bst">BST<input id="override-bst" class="text-input override-input" type="text" maxlength="40" autocomplete="off" aria-label="BST time zone override"></label>
+          <label for="override-est">EST<input id="override-est" class="text-input override-input" type="text" maxlength="40" autocomplete="off" aria-label="EST time zone override"></label>
+          <label for="override-pst">PST<input id="override-pst" class="text-input override-input" type="text" maxlength="40" autocomplete="off" aria-label="PST time zone override"></label>
+        </div>
+        <p id="settings-state" class="settings-state" role="status" aria-live="polite"></p>
+      </div>
+    </details>
+
+    <div class="pro-row" aria-label="Reminders Pro, coming soon">
+      <span>Reminders · Pro</span><span class="coming-soon">Soon</span>
+    </div>
+
+    <footer>
+      <span>Runs locally · No remote code</span>
+      <a href="https://github.com/marsiandeployer/howlonguntil" target="_blank" rel="noopener noreferrer">Open source</a>
+    </footer>
+  </main>
+</body>
+</html>

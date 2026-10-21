@@ -1,0 +1,13 @@
+node_modules/
+dist/
+out/
+.env*
+*.pem
+*.key
+.impeccable/mocks/
+qa/browser-profile*/
+qa/.extension-fixture-*/
+qa/*.log
+store/creatives/*.png
+store/creatives/*.jpg
+store/creatives/*.webp

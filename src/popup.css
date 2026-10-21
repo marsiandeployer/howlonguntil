@@ -1,0 +1,92 @@
+:root {
+  color-scheme: light dark;
+  --surface: #fffefa;
+  --surface-soft: #f5f3ef;
+  --ink: #23212a;
+  --muted: #696671;
+  --line: #e7e4e0;
+  --accent: #6554b8;
+  --accent-strong: #493b91;
+  --focus: #5746af;
+  --good: #36745d;
+  --warning: #76551d;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface: #211f24;
+    --surface-soft: #2b2930;
+    --ink: #f3f0f6;
+    --muted: #bcb7c3;
+    --line: #403d46;
+    --accent: #b5a6ff;
+    --accent-strong: #d0c7ff;
+    --focus: #c3b8ff;
+    --good: #9bd3b5;
+    --warning: #f0c97d;
+  }
+}
+* { box-sizing: border-box; }
+body { width: 380px; margin: 0; background: var(--surface); color: var(--ink); }
+button, input { font: inherit; }
+button { color: inherit; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.popup { padding: 19px 20px 13px; }
+.topline { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.eyebrow, .section-label { margin: 0 0 4px; color: var(--muted); font-size: 12px; font-weight: 750; letter-spacing: .1em; }
+h1 { margin: 0; font-size: 21px; line-height: 1.15; letter-spacing: -.035em; }
+h2 { margin: 0; font-size: 14px; font-weight: 680; }
+.active-mark { width: 9px; height: 9px; border-radius: 50%; background: var(--line); }
+.active-mark.on { background: var(--good); box-shadow: 0 0 0 3px color-mix(in srgb, var(--good) 15%, transparent); }
+.enable-section, .site-section { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.enable-section { padding: 13px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.enable-copy p { margin: 4px 0 0; color: var(--muted); font-size: 12px; }
+.switch, .small-switch { display: inline-flex; align-items: center; flex: 0 0 auto; border: 0; border-radius: 99px; cursor: pointer; background: #aaa6ae; padding: 3px; transition: background-color .15s ease; }
+.switch { width: 44px; height: 26px; }
+.small-switch { width: 36px; height: 22px; }
+.switch[aria-checked="true"], .small-switch[aria-checked="true"] { background: var(--accent); }
+.switch-thumb { display: block; width: 20px; height: 20px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px #0003; transition: transform .15s ease; }
+.small-switch .switch-thumb { width: 16px; height: 16px; }
+[aria-checked="true"] .switch-thumb { transform: translateX(18px); }
+.small-switch[aria-checked="true"] .switch-thumb { transform: translateX(14px); }
+button:disabled { opacity: .46; cursor: not-allowed; }
+.notice { margin: 10px 0 0; padding: 8px 10px; border-radius: 6px; background: var(--surface-soft); color: var(--warning); font-size: 12px; line-height: 1.45; }
+.site-section { padding: 11px 0; border-bottom: 1px solid var(--line); }
+.site-copy { display: grid; gap: 2px; min-width: 0; }
+.site-label { overflow: hidden; max-width: 295px; color: var(--muted); font-size: 12px; text-overflow: ellipsis; white-space: nowrap; }
+.events-section { padding: 13px 0 9px; }
+.section-heading { display: flex; align-items: center; justify-content: space-between; }
+.count { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+.event-state { margin: 10px 0 3px; color: var(--muted); font-size: 12px; line-height: 1.45; }
+.event-list { display: grid; gap: 2px; max-height: 188px; margin: 5px 0 0; padding: 0; overflow: auto; list-style: none; }
+.event-list:empty { display: none; }
+.event-item { min-width: 0; }
+.event-button { display: grid; width: 100%; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 4px 8px; padding: 9px 8px; border: 0; border-radius: 5px; background: transparent; text-align: left; cursor: pointer; }
+.event-button:hover { background: var(--surface-soft); }
+.event-source { overflow: hidden; color: var(--ink); text-overflow: ellipsis; white-space: nowrap; }
+.event-countdown { color: var(--accent-strong); font-size: 12px; font-variant-numeric: tabular-nums; font-weight: 700; white-space: nowrap; }
+.event-details { grid-column: 1 / -1; color: var(--muted); font-size: 12px; line-height: 1.45; }
+.preferences { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.preferences summary { padding: 11px 0; font-size: 12px; font-weight: 650; cursor: pointer; }
+.preferences-body { display: grid; gap: 7px; padding: 0 0 13px; }
+.field-label { font-size: 12px; font-weight: 650; }
+.text-input { width: 100%; min-height: 31px; border: 1px solid var(--line); border-radius: 5px; background: var(--surface); color: var(--ink); padding: 5px 8px; }
+.field-help { color: var(--muted); font-size: 12px; line-height: 1.4; }
+.check-row { display: inline-flex; align-items: center; gap: 7px; padding: 3px 0; font-size: 12px; cursor: pointer; }
+.check-row input { accent-color: var(--accent); }
+.override-heading { display: grid; gap: 2px; margin-top: 2px; }
+.override-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.override-grid label { display: grid; gap: 4px; color: var(--muted); font-size: 12px; font-weight: 700; }
+.override-input { min-width: 0; padding: 4px 5px; text-align: center; font-size: 12px; }
+.settings-state { min-height: 12px; margin: 0; color: var(--muted); font-size: 12px; }
+.pro-row { display: flex; justify-content: space-between; padding: 11px 0; color: var(--muted); font-size: 12px; }
+.coming-soon { color: var(--muted); font-size: 12px; }
+footer { display: flex; align-items: center; justify-content: space-between; padding-top: 9px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+a { color: var(--accent-strong); text-underline-offset: 2px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+
+::selection { background: var(--accent); color: var(--surface); }
+input { caret-color: var(--accent-strong); }
+.event-list { scrollbar-width: thin; scrollbar-color: var(--muted) var(--surface-soft); }

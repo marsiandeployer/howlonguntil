@@ -1,0 +1,598 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-21T12:08:16Z",
+  "title": "Design System: How Long Until — Time Highlighter",
+  "extensions": {
+    "colorMeta": {
+      "surface": {
+        "role": "neutral",
+        "displayName": "Warm white",
+        "canonical": "#fffefa",
+        "tonalRamp": [
+          "#0c0b09",
+          "#22221f",
+          "#3b3a37",
+          "#565552",
+          "#72716e",
+          "#908f8b",
+          "#afaeaa",
+          "#efeeea"
+        ]
+      },
+      "surface-soft": {
+        "role": "neutral",
+        "displayName": "Soft warm gray",
+        "canonical": "#f5f3ef",
+        "tonalRamp": [
+          "#0c0b09",
+          "#23211f",
+          "#3c3a37",
+          "#575552",
+          "#73716e",
+          "#918f8b",
+          "#afaeaa",
+          "#f0eeea"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Deep ink",
+        "canonical": "#23212a",
+        "tonalRamp": [
+          "#0c0a12",
+          "#222029",
+          "#3b3943",
+          "#56545e",
+          "#72707b",
+          "#908d99",
+          "#aeacb8",
+          "#efecf9"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted gray",
+        "canonical": "#696671",
+        "tonalRamp": [
+          "#0c0a12",
+          "#232029",
+          "#3b3943",
+          "#56535e",
+          "#73707b",
+          "#908d99",
+          "#afacb8",
+          "#f0ecf9"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Fine gray",
+        "canonical": "#e7e4e0",
+        "tonalRamp": [
+          "#0d0b08",
+          "#23211e",
+          "#3c3a37",
+          "#575551",
+          "#74716e",
+          "#918f8b",
+          "#b0adaa",
+          "#f1eeea"
+        ]
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Restrained violet",
+        "canonical": "#6554b8",
+        "tonalRamp": [
+          "#140045",
+          "#250064",
+          "#3b2283",
+          "#5441a3",
+          "#6f5fc4",
+          "#8c7de6",
+          "#aa9dff",
+          "#e9deff"
+        ]
+      },
+      "accent-strong": {
+        "role": "primary",
+        "displayName": "Deep violet",
+        "canonical": "#493b91",
+        "tonalRamp": [
+          "#110040",
+          "#23055e",
+          "#39287c",
+          "#52459c",
+          "#6d62bc",
+          "#8a81de",
+          "#a8a0ff",
+          "#e7e1ff"
+        ]
+      },
+      "focus": {
+        "role": "primary",
+        "displayName": "Focus violet",
+        "canonical": "#5746af",
+        "tonalRamp": [
+          "#14004a",
+          "#240068",
+          "#392088",
+          "#5240a8",
+          "#6c5ec9",
+          "#897deb",
+          "#a69cff",
+          "#e5deff"
+        ]
+      },
+      "good": {
+        "role": "tertiary",
+        "displayName": "Muted green",
+        "canonical": "#36745d",
+        "tonalRamp": [
+          "#001305",
+          "#002c1a",
+          "#004632",
+          "#23624c",
+          "#428068",
+          "#609e85",
+          "#7fbea4",
+          "#bfffe4"
+        ]
+      },
+      "warning": {
+        "role": "tertiary",
+        "displayName": "Warm warning",
+        "canonical": "#76551d",
+        "tonalRamp": [
+          "#1d0300",
+          "#371900",
+          "#523300",
+          "#6f4e15",
+          "#8d6b35",
+          "#ac8952",
+          "#cca771",
+          "#ffe8af"
+        ]
+      },
+      "toggle-muted": {
+        "role": "neutral",
+        "displayName": "Inactive toggle gray",
+        "canonical": "#aaa6ae",
+        "tonalRamp": [
+          "#0d0a0f",
+          "#232026",
+          "#3c3940",
+          "#57545b",
+          "#737077",
+          "#918d95",
+          "#b0acb4",
+          "#f1ecf5"
+        ]
+      },
+      "page-underline": {
+        "role": "primary",
+        "displayName": "Page underline violet",
+        "canonical": "#8062b8",
+        "tonalRamp": [
+          "#160039",
+          "#2c0256",
+          "#452474",
+          "#604193",
+          "#7c5eb3",
+          "#9a7cd4",
+          "#b89bf6",
+          "#f9dbff"
+        ]
+      },
+      "surface-dark": {
+        "role": "neutral",
+        "displayName": "Dark surface",
+        "canonical": "#211f24",
+        "tonalRamp": [
+          "#0c0a0f",
+          "#232126",
+          "#3b393f",
+          "#56545a",
+          "#737076",
+          "#908e94",
+          "#afacb3",
+          "#f0edf4"
+        ]
+      },
+      "surface-soft-dark": {
+        "role": "neutral",
+        "displayName": "Dark soft surface",
+        "canonical": "#2b2930",
+        "tonalRamp": [
+          "#0c0a10",
+          "#222027",
+          "#3b3941",
+          "#56545c",
+          "#727078",
+          "#908e96",
+          "#afacb5",
+          "#efedf6"
+        ]
+      },
+      "ink-dark": {
+        "role": "neutral",
+        "displayName": "Light dark-mode ink",
+        "canonical": "#f3f0f6",
+        "tonalRamp": [
+          "#0c0a0e",
+          "#232125",
+          "#3c393e",
+          "#575459",
+          "#737075",
+          "#908e93",
+          "#afacb2",
+          "#f0edf3"
+        ]
+      },
+      "muted-dark": {
+        "role": "neutral",
+        "displayName": "Dark-mode muted text",
+        "canonical": "#bcb7c3",
+        "tonalRamp": [
+          "#0d0911",
+          "#232029",
+          "#3c3842",
+          "#57535d",
+          "#746f7a",
+          "#918d98",
+          "#b0abb7",
+          "#f1ecf8"
+        ]
+      },
+      "line-dark": {
+        "role": "neutral",
+        "displayName": "Dark-mode divider",
+        "canonical": "#403d46",
+        "tonalRamp": [
+          "#0c0a11",
+          "#232028",
+          "#3c3942",
+          "#57535d",
+          "#73707a",
+          "#918d98",
+          "#afacb7",
+          "#f0ecf8"
+        ]
+      },
+      "accent-dark": {
+        "role": "primary",
+        "displayName": "Pale violet",
+        "canonical": "#b5a6ff",
+        "tonalRamp": [
+          "#12003a",
+          "#260957",
+          "#3d2876",
+          "#574595",
+          "#7362b5",
+          "#9080d6",
+          "#ae9ff8",
+          "#eee0ff"
+        ]
+      },
+      "accent-strong-dark": {
+        "role": "primary",
+        "displayName": "Pale deep violet",
+        "canonical": "#d0c7ff",
+        "tonalRamp": [
+          "#0e0128",
+          "#231843",
+          "#3c325f",
+          "#564d7d",
+          "#72699b",
+          "#9087bb",
+          "#aea5dc",
+          "#efe6ff"
+        ]
+      },
+      "focus-dark": {
+        "role": "primary",
+        "displayName": "Pale focus violet",
+        "canonical": "#c3b8ff",
+        "tonalRamp": [
+          "#0f0030",
+          "#24134c",
+          "#3c2e69",
+          "#564a88",
+          "#7266a7",
+          "#8f84c7",
+          "#aea3e8",
+          "#eee3ff"
+        ]
+      },
+      "good-dark": {
+        "role": "tertiary",
+        "displayName": "Pale green",
+        "canonical": "#9bd3b5",
+        "tonalRamp": [
+          "#001302",
+          "#002b16",
+          "#0b462e",
+          "#2c6248",
+          "#497f64",
+          "#679d81",
+          "#85bc9f",
+          "#c5fedf"
+        ]
+      },
+      "warning-dark": {
+        "role": "tertiary",
+        "displayName": "Pale warning",
+        "canonical": "#f0c97d",
+        "tonalRamp": [
+          "#1e0100",
+          "#391900",
+          "#543300",
+          "#714e00",
+          "#8f6b18",
+          "#ae893c",
+          "#cea85c",
+          "#ffe99c"
+        ]
+      },
+      "tooltip-surface-dark": {
+        "role": "neutral",
+        "displayName": "Tooltip dark surface",
+        "canonical": "#25212b",
+        "tonalRamp": [
+          "#0d0912",
+          "#231f29",
+          "#3c3843",
+          "#57535e",
+          "#746f7b",
+          "#918c99",
+          "#b0abb8",
+          "#f1ecfa"
+        ]
+      },
+      "tooltip-countdown": {
+        "role": "primary",
+        "displayName": "Tooltip deep violet",
+        "canonical": "#4e347c",
+        "tonalRamp": [
+          "#140035",
+          "#2a0a51",
+          "#43286f",
+          "#5d448e",
+          "#7a61ad",
+          "#977fce",
+          "#b69eef",
+          "#f7deff"
+        ]
+      },
+      "tooltip-countdown-dark": {
+        "role": "primary",
+        "displayName": "Tooltip pale violet",
+        "canonical": "#c8b2f4",
+        "tonalRamp": [
+          "#13002c",
+          "#291247",
+          "#422d64",
+          "#5d4882",
+          "#7a64a1",
+          "#9882c1",
+          "#b6a1e2",
+          "#f7e1ff"
+        ]
+      },
+      "tooltip-muted": {
+        "role": "neutral",
+        "displayName": "Tooltip muted text",
+        "canonical": "#625b6d",
+        "tonalRamp": [
+          "#0e0815",
+          "#241e2d",
+          "#3d3748",
+          "#585263",
+          "#756e80",
+          "#938b9f",
+          "#b1aabe",
+          "#f2eaff"
+        ]
+      },
+      "tooltip-muted-dark": {
+        "role": "neutral",
+        "displayName": "Tooltip pale muted text",
+        "canonical": "#c2b9cd",
+        "tonalRamp": [
+          "#0e0815",
+          "#251e2d",
+          "#3e3747",
+          "#595163",
+          "#766d80",
+          "#938b9e",
+          "#b2a9bd",
+          "#f3eaff"
+        ]
+      },
+      "tooltip-ink": {
+        "role": "neutral",
+        "displayName": "Tooltip ink",
+        "canonical": "#211d27",
+        "tonalRamp": [
+          "#0d0912",
+          "#231f2a",
+          "#3c3843",
+          "#57535f",
+          "#746f7b",
+          "#918c99",
+          "#b0abb8",
+          "#f1ecfa"
+        ]
+      },
+      "tooltip-ink-dark": {
+        "role": "neutral",
+        "displayName": "Tooltip pale ink",
+        "canonical": "#f4f0f7",
+        "tonalRamp": [
+          "#0d0a0e",
+          "#232025",
+          "#3c393e",
+          "#575459",
+          "#737076",
+          "#918d94",
+          "#b0acb3",
+          "#f1edf4"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "title": {
+        "displayName": "Popup title",
+        "purpose": "Names the extension in the compact popup header."
+      },
+      "section-title": {
+        "displayName": "Section title",
+        "purpose": "Labels popup sections and controls."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Baseline popup text; secondary copy is 12px or larger."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Field labels, state notes, and compact supporting text."
+      },
+      "countdown": {
+        "displayName": "Countdown",
+        "purpose": "Primary time-remaining value in the page tooltip; tabular numerals."
+      }
+    },
+    "shadows": [
+      {
+        "name": "toggle-thumb",
+        "value": "0 1px 2px #0003",
+        "purpose": "Subtle separation between toggle thumb and track."
+      },
+      {
+        "name": "active-indicator",
+        "value": "0 0 0 3px color-mix(in srgb, var(--good) 15%, transparent)",
+        "purpose": "Quiet halo around the enabled mark."
+      },
+      {
+        "name": "tooltip-light",
+        "value": "0 8px 26px rgba(27, 20, 38, .15)",
+        "purpose": "Separates the event tooltip from page content in light mode."
+      },
+      {
+        "name": "tooltip-dark",
+        "value": "0 8px 26px rgba(0, 0, 0, .4)",
+        "purpose": "Maintains separation over page content in dark mode."
+      }
+    ],
+    "motion": [
+      {
+        "name": "control-state",
+        "value": "background-color .15s ease; transform .15s ease",
+        "purpose": "Subtle track and thumb response to a toggle action."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "transition-duration: .01ms",
+        "purpose": "Honors reduced-motion preference."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Main Toggle",
+      "kind": "button",
+      "refersTo": "toggle-off",
+      "description": "Main enable switch, with a clear active track and keyboard focus.",
+      "html": "<button class=\"ds-toggle\" type=\"button\" role=\"switch\" aria-checked=\"true\"><span class=\"ds-toggle-thumb\"></span></button>",
+      "css": ".ds-toggle { display: inline-flex; align-items: center; width: 44px; height: 26px; padding: 3px; border: 0; border-radius: 99px; background: var(--accent); cursor: pointer; transition: background-color .15s ease; } .ds-toggle:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; } .ds-toggle-thumb { display: block; width: 20px; height: 20px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px #0003; transform: translateX(18px); transition: transform .15s ease; } .ds-toggle[aria-checked=\"false\"] { background: var(--toggle-muted); } .ds-toggle[aria-checked=\"false\"] .ds-toggle-thumb { transform: translateX(0); } .ds-toggle:disabled { opacity: .46; cursor: not-allowed; }"
+    },
+    {
+      "name": "Site Toggle",
+      "kind": "button",
+      "refersTo": "toggle-on",
+      "description": "Smaller per-site version of the same accessible switch.",
+      "html": "<button class=\"ds-site-toggle\" type=\"button\" role=\"switch\" aria-checked=\"false\"><span class=\"ds-site-toggle-thumb\"></span></button>",
+      "css": ".ds-site-toggle { display: inline-flex; align-items: center; width: 36px; height: 22px; padding: 3px; border: 0; border-radius: 99px; background: var(--toggle-muted); cursor: pointer; transition: background-color .15s ease; } .ds-site-toggle:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; } .ds-site-toggle[aria-checked=\"true\"] { background: var(--accent); } .ds-site-toggle-thumb { display: block; width: 16px; height: 16px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px #0003; transition: transform .15s ease; } .ds-site-toggle[aria-checked=\"true\"] .ds-site-toggle-thumb { transform: translateX(14px); } .ds-site-toggle:disabled { opacity: .46; cursor: not-allowed; }"
+    },
+    {
+      "name": "Detected Time Row",
+      "kind": "button",
+      "refersTo": "event-row",
+      "description": "Keyboard-accessible page-match row with aligned event countdown.",
+      "html": "<button class=\"ds-event-row\"><span class=\"ds-event-source\">6 PM CST</span><span class=\"ds-event-countdown\">2h 14m</span><span class=\"ds-event-details\">Oct 21, 2026 · America/Chicago</span></button>",
+      "css": ".ds-event-row { display: grid; width: 100%; grid-template-columns: minmax(0,1fr) auto; align-items: center; gap: 4px 8px; padding: 9px 8px; border: 0; border-radius: 5px; background: transparent; color: var(--ink); text-align: left; cursor: pointer; } .ds-event-row:hover { background: var(--surface-soft); } .ds-event-row:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; } .ds-event-source { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } .ds-event-countdown { color: var(--accent-strong); font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; } .ds-event-details { grid-column: 1 / -1; color: var(--muted); font-size: 12px; line-height: 1.45; } @media (prefers-color-scheme: dark) { .ds-event-row { color: var(--ink-dark); } .ds-event-row:hover { background: var(--surface-soft-dark); } .ds-event-countdown { color: var(--accent-strong-dark); } .ds-event-details { color: var(--muted-dark); } }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "text-input",
+      "description": "Editable zone and override fields with visible keyboard focus.",
+      "html": "<input class=\"ds-text-input\" type=\"text\" value=\"Europe/London\" aria-label=\"Time zone\">",
+      "css": ".ds-text-input { width: 100%; min-height: 31px; padding: 5px 8px; border: 1px solid var(--line); border-radius: 5px; background: var(--surface); color: var(--ink); font: inherit; } .ds-text-input:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; } @media (prefers-color-scheme: dark) { .ds-text-input { border-color: var(--line-dark); background: var(--surface-dark); color: var(--ink-dark); } }"
+    },
+    {
+      "name": "Status Notice",
+      "kind": "custom",
+      "refersTo": "notice",
+      "description": "Concise permission or configuration feedback.",
+      "html": "<div class=\"ds-notice\" role=\"status\">Website access was not granted. Highlighting remains off.</div>",
+      "css": ".ds-notice { padding: 8px 10px; border-radius: 6px; background: var(--surface-soft); color: var(--warning); font-size: 12px; line-height: 1.45; } @media (prefers-color-scheme: dark) { .ds-notice { background: var(--surface-soft-dark); color: var(--warning-dark); } }"
+    },
+    {
+      "name": "Countdown Tooltip",
+      "kind": "custom",
+      "refersTo": "countdown",
+      "description": "Floating page detail that leads with time remaining.",
+      "html": "<section class=\"ds-tooltip\"><div class=\"ds-tooltip-source\">6 PM CST</div><div class=\"ds-tooltip-countdown\">in 2 hours</div><div class=\"ds-tooltip-local\">October 21 · 6:00 PM</div><div class=\"ds-tooltip-zone\">America/Chicago</div><div class=\"ds-tooltip-assumption\">Assumed date: October 21</div></section>",
+      "css": ".ds-tooltip { width: max-content; max-width: min(340px, calc(100vw - 24px)); padding: 13px 16px 14px; border: 1px solid rgba(49, 37, 67, .13); border-radius: 12px; background: var(--surface); color: #211d27; box-shadow: 0 8px 26px rgba(27,20,38,.15); font: 13px/1.45 system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif; } .ds-tooltip-source { color: #625b6d; font-size: 12px; overflow-wrap: anywhere; } .ds-tooltip-countdown { margin: 2px 0 5px; color: #4e347c; font-size: 25px; font-weight: 650; line-height: 1.15; font-variant-numeric: tabular-nums; letter-spacing: -.025em; } .ds-tooltip-local { color: #211d27; font-size: 13px; font-variant-numeric: tabular-nums; } .ds-tooltip-zone, .ds-tooltip-assumption { color: #625b6d; font-size: 12px; } .ds-tooltip-assumption { margin-top: 5px; } @media (prefers-color-scheme: dark) { .ds-tooltip { border-color: rgba(255,255,255,.16); background: #25212b; color: #f4f0f7; box-shadow: 0 8px 26px rgba(0,0,0,.4); } .ds-tooltip-source, .ds-tooltip-zone, .ds-tooltip-assumption { color: #c2b9cd; } .ds-tooltip-countdown { color: #c8b2f4; } .ds-tooltip-local { color: #f4f0f7; } }"
+    },
+    {
+      "name": "Page Time Highlight",
+      "kind": "custom",
+      "refersTo": "page-underline",
+      "description": "Thin violet underline marks the matched range without replacing page text.",
+      "html": "<span class=\"ds-page-highlight\">6 PM CST</span>",
+      "css": ".ds-page-highlight { color: inherit; text-decoration-line: underline; text-decoration-color: var(--page-underline); text-decoration-thickness: 1.5px; text-underline-offset: .16em; }"
+    },
+    {
+      "name": "Reminders Coming Soon",
+      "kind": "custom",
+      "description": "Muted non-interactive status for the planned Pro feature.",
+      "html": "<div class=\"ds-coming-soon\" aria-disabled=\"true\"><span>Reminders · Pro</span><span>Soon</span></div>",
+      "css": ".ds-coming-soon { display: flex; justify-content: space-between; padding: 11px 0; color: var(--muted); font-size: 12px; } .ds-coming-soon span:last-child { color: var(--muted); font-size: 12px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Not selected; the current interface system is provisional.",
+    "overview": "The extension popup is compact, quiet, readable, and countdown-first. It uses warm white surfaces, deep ink, and restrained violet accents. The page itself keeps its wording and layout; supported times receive a fine violet underline, with details shown in a small floating tooltip. Light and dark appearance follow the operating system.",
+    "keyCharacteristics": [
+      "Compact utility surface with a fixed 380px popup width.",
+      "System UI typography and tabular countdown numerals.",
+      "Warm neutral surfaces, ink text, and violet action/highlight color.",
+      "Minimal borders and state feedback; no decorative gradients."
+    ],
+    "rules": [
+      {
+        "name": "The Page-Preservation Rule",
+        "body": "Highlight the detected range with an underline while preserving the original wording and layout.",
+        "section": "colors"
+      },
+      {
+        "name": "The Readable Utility Rule",
+        "body": "Keep secondary popup text at 12px or larger and body text at 14px; reserve smaller text for non-user-facing implementation details.",
+        "section": "typography"
+      }
+    ],
+    "dos": [
+      "Do preserve the current system UI stack, warm neutral surfaces, restrained violet states, and light/dark role pairing while the brand direction is provisional.",
+      "Do use the countdown as the page tooltip's strongest typographic element and align changing numbers with tabular numerals.",
+      "Do keep focus visible and secondary popup text at least 12px.",
+      "Do treat the page underline and tooltip as overlays that leave source text and page structure intact."
+    ],
+    "donts": [
+      "Don't treat this provisional interface palette as the final marketing identity; the user has not chosen a creative concept.",
+      "Don't add decorative gradients, dashboard-like panels, artificial world clocks, or invented activity to the extension UI.",
+      "Don't make the future Reminders label look interactive or claim it is available."
+    ]
+  }
+}

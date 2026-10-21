@@ -1,0 +1,12 @@
+Use case: ads-marketing
+Asset type: promotional concept artwork for a browser extension store listing, not a product screenshot.
+Primary request: Create concept 02, midnight event/release announcement with a dramatic but clear large countdown.
+Scene/backdrop: Deep midnight-blue announcement canvas with understated event-poster typography, full bleed.
+Subject: A release announcement excerpt containing one visibly underlined time and an adjacent floating hover card.
+Style/medium: Crisp contemporary event typography and editorial graphic design, strong hierarchy.
+Composition/framing: Exact 1280x800 pixels, landscape 8:5 aspect ratio, full bleed. Asymmetric composition: heading upper left, the announcement excerpt prominent across the middle, the countdown card enlarged on the right with clear separation. All exact text must be crisp, readable, and spelled correctly.
+Lighting/mood: Focused, anticipatory, composed.
+Color palette: Midnight navy, soft white, crisp cyan underline and small cyan accents.
+Text (verbatim): Main heading "How Long Until"; excerpt "Product launch at 18:00 UTC"; underline only "18:00 UTC" in cyan; large hover card "In 2h 15m" and below it "21:00 your time"; small supporting copy "Hover a time. See what’s left."
+Constraints: Show only these real capabilities: the page time “18:00 UTC” is underlined and a hover card says “In 2h 15m” and “21:00 your time”. This is illustrative of a viewer in UTC+3. This is promotional concept artwork, not an actual product screenshot. Reminders are not functioning.
+Avoid: Google or Gmail logo, recognizable competitor branding, Chrome seals, ratings, fabricated endorsements, prices, security guarantees, fake features, reminders presented as working, decorative world clocks, dashboards, mock activity, fake UI controls, maps, extra text, misspellings, watermark.

@@ -1,0 +1,30 @@
+Title
+How Long Until — Time Highlighter
+
+Short description
+See how long until a time on any page. Automatic time zone highlighting, local time conversion and a live countdown.
+
+Detailed description
+How long until 18:00 UTC? Read the answer right where you found the time.
+
+How Long Until automatically underlines supported times on the web. Hover over one to see a live countdown, its date and time in your own time zone, and the original time zone. Keep reading the page without copying times into a converter.
+
+WHAT IT DOES
+• Automatically highlights supported dates and times after you enable website access.
+• Converts UTC, GMT, explicit offsets and common time zone abbreviations to your local time.
+• Shows how long until a future event, or how long ago a dated event happened.
+• Explains the date used when a time has no date: the next occurrence of that time.
+• Lets you choose a target time zone, use a 12- or 24-hour clock, and change abbreviation defaults.
+• Includes global and per-site controls.
+
+EVERYTHING RUNS LOCALLY
+All executable code and resources are included in the extension. No remote scripts, analytics, advertising, account or page-text transmission. The source code and build instructions are public.
+
+EXAMPLES
+Check how long until 3 PM EST, translate 18:00 UTC to local time, or understand an ISO timestamp in an announcement. Times without a zone and unsupported date formats are left alone. Browser-internal pages, editable fields and code samples are excluded.
+
+TIME ZONE ASSUMPTIONS
+EST and PST are literal fixed offsets; ET and PT follow daylight saving. CST defaults to US Central Standard Time and IST to India. You can change abbreviation defaults in settings.
+
+FREE CORE, FUTURE REMINDERS
+Highlighting, local time conversion and the countdown are free. Reminders are a planned paid feature, marked “Pro — Soon”. This version does not include reminders, billing or notification permissions.

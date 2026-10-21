@@ -18,7 +18,7 @@ function eventHook() {
 function createChromeMock({ enabled = false, permitted = false } = {}) {
   const state = {
     settings: { enabled, siteDisabled: [], timeZone: 'system', hour12: false, abbreviationOverrides: {} },
-    permitted,
+    grantedOrigins: permitted ? ['http://*/*', 'https://*/*'] : [],
     registered: [],
     registerCalls: 0,
     unregisterCalls: 0,
@@ -46,7 +46,8 @@ function createChromeMock({ enabled = false, permitted = false } = {}) {
       },
     },
     permissions: {
-      contains(_query, done) { done(state.permitted); },
+      contains({ origins }, done) { done(origins.every(origin => state.grantedOrigins.includes(origin))); },
+      onAdded: eventHook(),
       onRemoved: eventHook(),
     },
     scripting: {
@@ -165,7 +166,7 @@ test('removing host access disables the setting and unregisters the content scri
   await sendConfigure(chrome);
   assert.deepEqual(state.registered.map(script => script.id), ['hlu-pages']);
 
-  state.permitted = false;
+  state.grantedOrigins = [];
   chrome.permissions.onRemoved.fire({ origins: ['http://*/*', 'https://*/*'] });
   await waitFor(() => state.settings.enabled === false && state.registered.length === 0,
     'permission removal should disable settings and unregister the script');
@@ -183,6 +184,62 @@ test('enabled setting without host access does not register page code', async ()
   assert.deepEqual(response, { configured: false, permitted: false });
   assert.equal(state.registerCalls, 0);
   assert.deepEqual(state.registered, []);
+});
+
+test('full host grant enables and configures in the background after the popup is gone', async () => {
+  const { chrome, state } = createChromeMock({ enabled: false, permitted: false });
+  state.settings = {
+    ...state.settings,
+    timeZone: 'Europe/Paris',
+    siteDisabled: ['https://example.test'],
+    hour12: true,
+  };
+  await loadBackground(chrome);
+
+  state.grantedOrigins = ['http://*/*', 'https://*/*'];
+  chrome.permissions.onAdded.fire({ origins: ['http://*/*', 'https://*/*'] });
+  await waitFor(() => state.settings.enabled === true && state.registered.length === 1,
+    'full permission grant should enable settings and register page code without popup callbacks');
+
+  assert.equal(state.settings.enabled, true);
+  assert.equal(state.settings.timeZone, 'Europe/Paris');
+  assert.deepEqual(state.settings.siteDisabled, ['https://example.test']);
+  assert.equal(state.settings.hour12, true);
+  assert.equal(state.registerCalls, 1);
+  assert.deepEqual(state.registered.map(script => script.id), ['hlu-pages']);
+});
+
+test('full host grant configures even if the popup saved enabled before closing', async () => {
+  const { chrome, state } = createChromeMock({ enabled: true, permitted: false });
+  await loadBackground(chrome);
+
+  state.grantedOrigins = ['http://*/*', 'https://*/*'];
+  chrome.permissions.onAdded.fire({ origins: ['http://*/*', 'https://*/*'] });
+  await waitFor(() => state.registered.length === 1,
+    'permission grant should complete configuration when enabled was already saved');
+
+  assert.equal(state.settings.enabled, true);
+  assert.equal(state.registerCalls, 1);
+  assert.deepEqual(state.registered.map(script => script.id), ['hlu-pages']);
+});
+
+test('partial host grant stays disabled until both optional origins are present', async () => {
+  const { chrome, state } = createChromeMock({ enabled: false, permitted: false });
+  await loadBackground(chrome);
+
+  state.grantedOrigins = ['http://*/*'];
+  chrome.permissions.onAdded.fire({ origins: ['http://*/*'] });
+  await new Promise(resolve => setTimeout(resolve, 0));
+  assert.equal(state.settings.enabled, false);
+  assert.equal(state.registerCalls, 0);
+
+  state.grantedOrigins.push('https://*/*');
+  chrome.permissions.onAdded.fire({ origins: ['https://*/*'] });
+  await waitFor(() => state.settings.enabled === true && state.registered.length === 1,
+    'completing both origins should enable and configure');
+
+  assert.equal(state.registerCalls, 1);
+  assert.deepEqual(state.registered.map(script => script.id), ['hlu-pages']);
 });
 
 test('status and reveal messages are routed to the main document frame', async () => {

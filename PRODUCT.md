@@ -25,7 +25,7 @@ Ordinary HTTP/HTTPS pages, including dynamically inserted content. The browser s
 - All code, libraries, styles and assets ship in the extension. No remote code, telemetry, account, payment, or page-text transmission.
 - Open-source MIT repository. Local-only preferences.
 - Reminders will be paid; v1 shows the disabled label “Reminders · Pro — Soon”.
-- User will choose from five different creative concepts delivered to Telegram before store art is finalized.
+- Selected store-marketing direction: concept 04, calm blue editorial desk, pale paper, deep navy typography, and cyan time underline. Promo tile and marquee are uploaded and read back.
 
 ## Brand Commitments
 Use “How long until” in the store title and realistic use cases. Explain privacy with verifiable claims: “Runs locally. No remote code. Open source.” Do not claim automatic highlighting is unique or guarantee absolute safety.

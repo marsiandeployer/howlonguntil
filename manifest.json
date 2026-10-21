@@ -2,14 +2,26 @@
   "manifest_version": 3,
   "name": "How Long Until — Time Highlighter",
   "short_name": "How Long Until",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "minimum_chrome_version": "140",
   "description": "See how long until a time on any page. Automatic time zone highlighting, local time conversion and a live countdown.",
   "homepage_url": "https://github.com/marsiandeployer/howlonguntil",
-  "permissions": ["storage", "scripting"],
-  "optional_host_permissions": ["http://*/*", "https://*/*"],
-  "background": { "service_worker": "background.js", "type": "module" },
-  "action": { "default_popup": "popup.html", "default_title": "How Long Until" },
+  "permissions": [
+    "storage",
+    "scripting"
+  ],
+  "optional_host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "How Long Until"
+  },
   "icons": {
     "16": "assets/icons/icon16.png",
     "32": "assets/icons/icon32.png",

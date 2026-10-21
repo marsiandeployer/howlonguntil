@@ -101,21 +101,22 @@ components:
 
 ## Overview
 
-**Creative North Star: Not selected.** The current implementation is a provisional interface system; the user will choose one of five marketing concepts before the final brand direction is set.
+**Creative North Star: Concept 04, Calm Blue Editorial Desk.** Store marketing uses a calm blue desk, pale paper, deep navy typography, a restrained cyan time underline, soft daylight, and quiet human context. This selected marketing identity is separate from the utility interface, which remains the warm-white and violet system currently implemented below.
 
-The extension popup is compact, quiet, readable, and countdown-first. It uses warm white surfaces, deep ink, and restrained violet accents. The page itself keeps its wording and layout; supported times receive a fine violet underline, with details shown in a small floating tooltip. Light and dark appearance follow the operating system.
+The extension popup is compact, quiet, readable, and countdown-first. It uses warm white surfaces, deep ink, and restrained violet accents. The page itself keeps its wording and layout; supported times receive a fine violet underline, with details shown in a small floating tooltip. Light and dark appearance follow the operating system. Store artwork uses the selected blue editorial direction and is promotional illustration rather than a product screenshot.
 
 **Key Characteristics:**
 - Compact utility surface with a fixed 380px popup width.
 - System UI typography and tabular countdown numerals.
 - Warm neutral surfaces, ink text, and violet action/highlight color.
 - Minimal borders and state feedback; no decorative gradients.
+- Store marketing uses pale paper, calm blue, navy type, and a cyan time underline, following selected concept 04.
 
 ## Colors
 
 The popup's light palette is warm white and charcoal with violet for active controls and links; dark mode swaps the same roles to a charcoal surface and pale text. The page tooltip has its own slightly warmer dark surface.
 
-### Primary
+### Utility interface
 - **Restrained violet** (`accent`): toggle-on state and the time-highlight underline; dark mode uses its paired pale violet token.
 - **Deep violet** (`accent-strong`): popup links and countdown emphasis.
 
@@ -129,6 +130,9 @@ The popup's light palette is warm white and charcoal with violet for active cont
 
 ### Named Rules
 **The Page-Preservation Rule.** Highlight the detected range with an underline while preserving the original wording and layout.
+
+### Store marketing identity
+Selected concept 04 uses a calm blue editorial desk, pale paper, deep navy typography, a restrained cyan underline, and soft daylight. These are store-art direction; the packaged utility UI continues to use the warm-white and violet tokens above.
 
 ## Typography
 
@@ -187,12 +191,13 @@ Detected text receives a 1.5px violet underline with a small offset. Hover opens
 ## Do's and Don'ts
 
 ### Do:
-- **Do** preserve the current system UI stack, warm neutral surfaces, restrained violet states, and light/dark role pairing while the brand direction is provisional.
+- **Do** preserve the current system UI stack, warm neutral surfaces, restrained violet states, and light/dark role pairing in the utility interface.
+- **Do** use the selected concept 04 blue editorial desk, pale paper, navy type, and cyan time underline for store marketing artwork.
 - **Do** use the countdown as the page tooltip's strongest typographic element and align changing numbers with tabular numerals.
 - **Do** keep focus visible and secondary popup text at least 12px.
 - **Do** treat the page underline and tooltip as overlays that leave source text and page structure intact.
 
 ### Don't:
-- **Don't** treat this provisional interface palette as the final marketing identity; the user has not chosen a creative concept.
+- **Don't** apply the store-art blue and cyan palette to the utility interface without a separate UI design change.
 - **Don't** add decorative gradients, dashboard-like panels, artificial world clocks, or invented activity to the extension UI.
 - **Don't** make the future Reminders label look interactive or claim it is available.

@@ -26,7 +26,7 @@ Fields you edit, code samples, hidden text, browser-internal pages, closed shado
 
 ## Release
 
-This is a new product. Its Chrome Web Store item is separate from SimpleReview. A ZIP build or review submission does not mean public availability. Store artwork is finalized after the user chooses one of five concepts.
+This is a new product. Its Chrome Web Store item is separate from SimpleReview. A ZIP build or review submission does not mean public availability. Selected store-marketing direction is concept 04: calm blue editorial desk, pale paper, deep navy typography, and cyan time underline. The promo tile and marquee are uploaded and read back.
 
 ## License
 

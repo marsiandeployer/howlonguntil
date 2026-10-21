@@ -101,6 +101,21 @@ function configure() {
   return result;
 }
 
+async function enableAfterHostPermissionGrant() {
+  if (!await permissionContains(OPTIONAL_ORIGINS)) return;
+  const current = await readSettings();
+  if (!current.enabled) {
+    const settings = resolveSettings({ ...current, enabled: true });
+    await new Promise((resolve, reject) => {
+      chrome.storage.local.set({ settings }, () => {
+        const error = chrome.runtime.lastError;
+        if (error) reject(new Error(error.message)); else resolve();
+      });
+    });
+  }
+  await configure();
+}
+
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message?.type === 'HLU_CONFIGURE') {
     configure().then(sendResponse, error => sendResponse({ error: error.message }));
@@ -128,6 +143,11 @@ chrome.permissions.onRemoved.addListener(({ origins = [] }) => {
       if (current.enabled) await chrome.storage.local.set({ settings: { ...current, enabled: false } });
     }
   }).catch(() => {});
+});
+
+chrome.permissions.onAdded.addListener(({ origins = [] }) => {
+  if (!origins.some(origin => OPTIONAL_ORIGINS.includes(origin))) return;
+  enableAfterHostPermissionGrant().catch(() => {});
 });
 
 chrome.runtime.onInstalled.addListener(() => { configure().catch(() => {}); });

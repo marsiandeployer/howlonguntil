@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "at": "2026-10-21T12:09:51.673Z",
+  "at": "2026-10-21T12:50:32.692Z",
   "browser": "Chrome/155.0.8059.39",
   "checks": [
     {
@@ -36,7 +36,7 @@
     },
     {
       "name": "large page retains 5000 paragraphs and detects all 100 times",
-      "scanElapsedMs": 3264,
+      "scanElapsedMs": 3167,
       "popupEvents": 50
     },
     {
@@ -50,5 +50,5 @@
   "limitations": [
     "Production manifest default/no-access state is verified. Native optional-permission accept/cancel dialog UI is not automated; functional UI/content checks use byte-identical JS and a separate test-only manifest with pre-granted hosts. Permission removal is covered by unit tests."
   ],
-  "productionManifest": "1.0.0"
+  "productionManifest": "1.0.1"
 }

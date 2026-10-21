@@ -563,13 +563,14 @@
     }
   ],
   "narrative": {
-    "northStar": "Not selected; the current interface system is provisional.",
-    "overview": "The extension popup is compact, quiet, readable, and countdown-first. It uses warm white surfaces, deep ink, and restrained violet accents. The page itself keeps its wording and layout; supported times receive a fine violet underline, with details shown in a small floating tooltip. Light and dark appearance follow the operating system.",
+    "northStar": "Selected marketing identity: concept 04, a calm blue editorial desk with pale paper, deep navy typography, a restrained cyan time underline, soft daylight, and quiet human context. The utility interface remains the warm-white and violet system currently implemented.",
+    "overview": "The utility interface is compact, quiet, readable, and countdown-first. The popup uses warm white surfaces, deep ink, and restrained violet accents. The page keeps its wording and layout; supported times receive a fine violet underline, with details shown in a small floating tooltip. Light and dark appearance follow the operating system. Store marketing follows selected concept 04: a calm blue desk, pale paper, navy typography, a cyan time underline, and soft daylight; its artwork is promotional illustration rather than a product screenshot.",
     "keyCharacteristics": [
       "Compact utility surface with a fixed 380px popup width.",
       "System UI typography and tabular countdown numerals.",
       "Warm neutral surfaces, ink text, and violet action/highlight color.",
-      "Minimal borders and state feedback; no decorative gradients."
+      "Minimal borders and state feedback; no decorative gradients.",
+      "Store marketing follows selected concept 04: pale paper, calm blue, navy type, and a cyan time underline."
     ],
     "rules": [
       {
@@ -584,13 +585,14 @@
       }
     ],
     "dos": [
-      "Do preserve the current system UI stack, warm neutral surfaces, restrained violet states, and light/dark role pairing while the brand direction is provisional.",
+      "Do preserve the current system UI stack, warm neutral surfaces, restrained violet states, and light/dark role pairing in the utility interface.",
+      "Do use the selected concept 04 blue editorial desk, pale paper, navy type, and cyan time underline for store marketing artwork.",
       "Do use the countdown as the page tooltip's strongest typographic element and align changing numbers with tabular numerals.",
       "Do keep focus visible and secondary popup text at least 12px.",
       "Do treat the page underline and tooltip as overlays that leave source text and page structure intact."
     ],
     "donts": [
-      "Don't treat this provisional interface palette as the final marketing identity; the user has not chosen a creative concept.",
+      "Don't apply the store-art blue and cyan palette to the utility interface without a separate UI design change.",
       "Don't add decorative gradients, dashboard-like panels, artificial world clocks, or invented activity to the extension UI.",
       "Don't make the future Reminders label look interactive or claim it is available."
     ]

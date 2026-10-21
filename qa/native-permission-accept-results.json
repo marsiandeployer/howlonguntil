@@ -1,0 +1,10 @@
+{
+  "decision": "accept",
+  "nativePromptObserved": true,
+  "hasOptionalHttpAndHttpsAccess": true,
+  "settingsEnabled": true,
+  "pageHighlighted": true,
+  "promptScreenshot": "/root/howlonguntil/qa/native-permission-accept.png",
+  "afterScreenshot": "/root/howlonguntil/qa/native-permission-accept-after.png",
+  "status": "PASS"
+}

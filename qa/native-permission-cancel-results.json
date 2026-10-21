@@ -1,0 +1,10 @@
+{
+  "decision": "cancel",
+  "nativePromptObserved": true,
+  "hasOptionalHttpAndHttpsAccess": false,
+  "settingsEnabled": false,
+  "pageHighlighted": false,
+  "promptScreenshot": "/root/howlonguntil/qa/native-permission-cancel.png",
+  "afterScreenshot": "/root/howlonguntil/qa/native-permission-cancel-after.png",
+  "status": "PASS"
+}

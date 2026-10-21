@@ -1,6 +1,6 @@
 # Chrome Web Store submission
 
-Upload `howlonguntil-1.0.0.zip` as a **new item**. Do not upload it to the SimpleReview listing.
+A new draft was created on October 21, 2026: `mohifgpdnndhefjpkaacmnoadbphmmgl`. Package `howlonguntil-1.0.0.zip` was accepted. Description, category (Tools), language (English US), source/support URLs and privacy disclosures were saved and read back after reload. The item is not submitted or published. Continue editing this draft; do not create another item or upload over SimpleReview.
 
 Use the title and descriptions in `store/listing.en.txt`. The extension is free; its planned paid reminders are labelled “Pro — Soon” and are unavailable in this release.
 

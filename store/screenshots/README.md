@@ -1,0 +1,1 @@
+These are actual captures of the bundled extension on labelled example pages, at 1280×800. The example clock is frozen at 2026-10-21 15:45 UTC; target zone Europe/Moscow. A separate capture-only manifest grants hosts up front; runtime JS bytes are asserted identical to the release package. This capture manifest is never shipped.

@@ -1,0 +1,13 @@
+Use case: ads-marketing
+Asset type: wide browser extension store marquee promo artwork, final target ratio 5:2 (1400x560).
+Input image: Image 1 is the selected concept-04 reference; preserve its calm blue desk, pale paper, navy typography, cyan time underline, and softly lit editorial mood.
+Primary request: Create a polished wide promotional illustration for How Long Until. This is illustrative promotional artwork, not an actual product screenshot.
+Scene/backdrop: Calm blue desktop in soft daylight, a single pale paper meeting note, quiet human context with a hand or blue sleeve at one outer edge and a ceramic coffee cup near the opposite edge; peripheral objects stay subtle.
+Subject: A meeting note with a cyan-underlined UTC time and one white hover card anchored to the time.
+Composition/framing: Wide 5:2 layout, full bleed. Product name and tagline occupy a clean area on the left; note and hover card sit clearly on the right. Keep all copy comfortably inside margins and large enough to read.
+Style/medium: Calm editorial product illustration blended with precise, crisp typesetting and restrained paper texture; no recognizable email product or app interface.
+Lighting/mood: soft natural daylight, focused everyday work.
+Color palette: calm powder blue, pale warm-white paper, deep navy, restrained cyan underline.
+Text (verbatim): "How Long Until"; "Hover a time. See what’s left."; "Team sync at 18:00 UTC"; "In 2h 15m"; "21:00 your time".
+Constraints: Underline only "18:00 UTC". The illustrative time example means 18:00 UTC → 21:00 local / in 2h 15m, assuming a UTC+3 viewer. Clearly promotional artwork, not an actual product screenshot.
+Avoid: extra text, misspellings, logos, competitor branding, email or browser chrome, badges, ratings, fabricated endorsements, prices, security guarantees, working reminders, decorative clock faces, dashboard controls, maps, watermark.

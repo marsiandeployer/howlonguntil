@@ -1,0 +1,13 @@
+Use case: ads-marketing
+Asset type: small browser extension store promo tile, final artwork, exact target ratio 11:7 (440x280).
+Input image: Image 1 is the selected concept-04 reference; preserve its calm blue desk, pale paper, navy typography, cyan time underline, and softly lit editorial mood.
+Primary request: Create a compact, polished promotional illustration for How Long Until. It is illustrative promotional artwork, not a screenshot.
+Scene/backdrop: Minimal pale paper on a calm light-blue desk, soft daylight; only a faint hint of a blue sleeve/hand at an outer edge and a small coffee cup edge if space allows.
+Subject: A clean meeting note with an underlined time and a small white hover card visually anchored to it.
+Composition/framing: Wide 11:7 crop, full bleed. Keep all text large and inside safe margins. Reduce peripheral objects and omit tiny details. Focal order: product name, underlined time, countdown card.
+Style/medium: Calm editorial product illustration with crisp, legible typesetting; subtle paper texture; no fake UI chrome.
+Lighting/mood: soft daylight, quiet focused work.
+Color palette: pale paper, light calm blue, deep navy, restrained cyan underline.
+Text (verbatim): "How Long Until"; "Team sync at 18:00 UTC"; "In 2h 15m"; "21:00 your time".
+Constraints: The paper time 18:00 UTC alone is underlined. Show only the true illustrative capability: in UTC+3, 18:00 UTC corresponds to 21:00 local and is in 2h 15m. Promotional concept art, not an actual product screenshot.
+Avoid: extra text, misspellings, logos, competitor branding, email chrome, browser chrome, badges, ratings, guarantees, reminders, dashboard controls, decorative clock faces, watermark.

@@ -126,7 +126,7 @@ function renderEvents() {
     elements['event-state'].textContent = 'No supported time references found on this page.';
     return;
   }
-  elements['event-state'].textContent = 'Select a time to reveal it on the page.';
+  elements['event-state'].textContent = 'Select a date or time to reveal it on the page.';
   events.forEach((event, index) => {
     const item = document.createElement('li');
     item.className = 'event-item';
@@ -138,7 +138,7 @@ function renderEvents() {
     source.textContent = event.original || event.sourceLabel || 'Event time';
     const countdown = document.createElement('span');
     countdown.className = 'event-countdown';
-    countdown.dataset.instant = String(event.instantMs ?? '');
+    if (Number.isFinite(event.instantMs)) countdown.dataset.instant = String(event.instantMs);
     countdown.textContent = event.countdown || formatRemaining(event.instantMs);
     const details = document.createElement('span');
     details.className = 'event-details';

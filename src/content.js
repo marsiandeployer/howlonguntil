@@ -1,4 +1,4 @@
-import { scanText, formatEvent } from './time-engine.js';
+import { scanText, scanFinvizTimestamp, formatEvent } from './time-engine.js';
 import { resolveSettings, resolvedTimeZone } from './settings.js';
 
 (() => {
@@ -45,6 +45,8 @@ import { resolveSettings, resolvedTimeZone } from './settings.js';
   const pageOrigin = (() => {
     try { return location.origin; } catch { return ''; }
   })();
+  const finviz = /^(?:www\.)?finviz\.com$/i.test(location.hostname);
+  const shortDottedDates = /^(?:www\.)?t-j\.ru$/i.test(location.hostname);
 
   function isEnabled() {
     return settings.enabled === true && !settings.siteDisabled.includes(pageOrigin)
@@ -141,9 +143,9 @@ import { resolveSettings, resolvedTimeZone } from './settings.js';
   function renderTooltip() {
     if (!activeMatch || !card || card.hidden) return;
     const item = format(activeMatch);
-    fields.source.textContent = item.sourceLabel || activeMatch.sourceLabel || '';
+    fields.source.textContent = item.sourceLabel || activeMatch.original;
     fields.countdown.textContent = item.countdown;
-    fields.local.textContent = `${item.localDate} · ${item.localTime}`;
+    fields.local.textContent = [item.localDate, item.localTime].filter(Boolean).join(' · ');
     fields.zone.textContent = item.timeZone;
     fields.assumption.textContent = item.assumption || '';
     fields.assumption.hidden = !item.assumption;
@@ -294,10 +296,23 @@ import { resolveSettings, resolvedTimeZone } from './settings.js';
     const text = nodes.map(node => node.nodeValue).join('');
     let found;
     try {
+      const nowMs = Date.now();
       found = scanText(text, {
-        nowMs: Date.now(),
+        nowMs, shortDottedDates,
         overrides: settings.abbreviationOverrides,
       });
+      if (finviz) {
+        let offset = 0;
+        for (const node of nodes) {
+          const event = scanFinvizTimestamp(node.nodeValue, nowMs);
+          if (event) {
+            event.start += offset;
+            event.end += offset;
+            if (!found.some(item => item.start < event.end && event.start < item.end)) found.push(event);
+          }
+          offset += node.nodeValue.length;
+        }
+      }
     } catch { return []; }
     return found.map(event => {
       const start = locateOffset(nodes, lengths, event.start);

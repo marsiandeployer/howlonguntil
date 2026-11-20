@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { formatEvent, scanText } from '../src/time-engine.js';
+import { formatEvent, scanFinvizTimestamp, scanText } from '../src/time-engine.js';
 
 const NOW = Date.parse('2026-10-21T12:00:00Z');
 
@@ -114,4 +114,43 @@ test('formatEvent counts down to its fixed instant and reports future, now, and 
   assert.equal(formatEvent(event, { nowMs: event.instantMs, targetZone: 'America/New_York', hour12: true }).localTime, '2:00 PM');
   assert.equal(formatEvent(event, { nowMs: event.instantMs + 86_400_000, targetZone: 'UTC' }).countdown, '1 day ago');
   assert.equal(formatEvent(event, { nowMs: event.instantMs + 86_400_000, targetZone: 'UTC' }).state, 'past');
+});
+
+test('recognizes Russian calendar dates with nonbreaking spaces and counts local calendar days', () => {
+  const date = only('Документы подали 26\u00a0октября 2026\u00a0года.');
+  assert.equal(date.original, '26\u00a0октября 2026\u00a0года');
+  assert.equal(date.calendarDate, '2026-10-26');
+  assert.equal(date.instantMs, undefined);
+  const shown = formatEvent(date, { nowMs: Date.parse('2026-10-25T21:30:00Z'), targetZone: 'Europe/Moscow' });
+  assert.equal(shown.countdown, 'today');
+  assert.equal(shown.localTime, '');
+  assert.equal(shown.isoInstant, null);
+  assert.equal(only('29 октября 2026').calendarDate, '2026-10-29');
+  assert.deepEqual(scanText('31 февраля 2026 года и 12.31.2026'), []);
+});
+
+test('reads dotted calendar dates without treating addresses and versions as dates', () => {
+  assert.equal(only('Выпуск за 20:30, 10.10.2026').calendarDate, '2026-10-10');
+  assert.equal(only('27.10.26', { shortDottedDates: true }).calendarDate, '2026-10-27');
+  assert.deepEqual(scanText('27.10.26, 31.02.2026, IP 10.10.20.26 and v10.10.2026'), []);
+});
+
+test('uses the date in the stated zone on relative timestamps, including past Today times', () => {
+  const nowMs = Date.parse('2026-11-20T02:00:00Z');
+  assert.equal(only('Today, 8:07 AM ET', { nowMs }).instantMs, Date.parse('2026-11-19T13:07:00Z'));
+  assert.equal(only('Tomorrow at 4 PM CET', { nowMs }).instantMs, Date.parse('2026-11-21T15:00:00Z'));
+  assert.deepEqual(scanText('Today, 8:07 AM', { nowMs }), []);
+  assert.deepEqual(scanText('Today at 2:30 AM ET', { nowMs: Date.parse('2026-03-08T12:00:00Z') }), []);
+});
+
+test('resolves Finviz time labels using Eastern Time and the most recent matching date', () => {
+  const nowMs = Date.parse('2026-11-20T02:00:00Z');
+  const today = scanFinvizTimestamp(' Today, 8:07 AM ', nowMs);
+  assert.equal(today.start, 1);
+  assert.equal(today.instantMs, Date.parse('2026-11-19T13:07:00Z'));
+  assert.match(today.assumedDate, /Eastern Time assumed for Finviz/);
+  assert.equal(scanFinvizTimestamp('Nov 19, 8:37 PM', nowMs).instantMs, Date.parse('2026-11-20T01:37:00Z'));
+  assert.equal(scanFinvizTimestamp('Dec 31, 8:37 PM', Date.parse('2027-01-01T12:00:00Z')).instantMs, Date.parse('2027-01-01T01:37:00Z'));
+  assert.equal(scanFinvizTimestamp('The meeting is Today, 8:07 AM', nowMs), null);
+  assert.equal(scanFinvizTimestamp('Nov 31, 8:37 PM', nowMs), null);
 });

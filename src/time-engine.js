@@ -47,6 +47,12 @@ const ZONE_PATTERN = `(?:(?:UTC|GMT)(?:\\s*[+-]\\s*\\d{1,2}(?::?\\d{2})?)?|(?:${
 const ISO_RE = /\b\d{4}-\d{2}-\d{2}[Tt ]\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?(?:[zZ]|[+-]\d{2}:?\d{2})(?![\w])/g;
 const ISO_DATE = '(?:\\d{4}-\\d{2}-\\d{2})';
 const EN_DATE = `(?:${MONTH_PATTERN}\\s+\\d{1,2}(?:,?\\s+\\d{4})?|\\d{1,2}\\s+${MONTH_PATTERN}(?:\\s+\\d{4})?)`;
+const RU_MONTHS = 'января февраля марта апреля мая июня июля августа сентября октября ноября декабря'.split(' ');
+const RU_DATE = `(?<![\\p{L}\\p{N}])(\\d{1,2})\\s+(${RU_MONTHS.join('|')})\\s+(\\d{4})(?:\\s+года|\\s+г\\.)?(?![\\p{L}\\p{N}])`;
+const russianCalendarDate = new RegExp(RU_DATE, 'giu');
+const dottedDate = /(?<![\p{L}\p{N}.])(\d{2})\.(\d{2})\.(\d{4}|\d{2})(?![\p{L}\p{N}]|\.\d)/gu;
+const relativeTime = new RegExp(`(?<![\\p{L}\\p{N}])(today|yesterday|tomorrow)(?:\\s*,\\s*|\\s+(?:at\\s+)?)(?:(${ZONE_PATTERN})\\s+)?(${TIME_PATTERN})(?:[\\s,]+(${ZONE_PATTERN}))?(?![\\p{L}\\p{N}:])`, 'giu');
+const finvizTimestamp = new RegExp(`^\\s*(today|yesterday|${MONTH_PATTERN}\\s+\\d{1,2})\\s*,\\s*((?:0?[1-9]|1[0-2]):[0-5]\\d\\s*[AP]M)\\s*$`, 'i');
 
 function escapeRegex(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -129,7 +135,7 @@ function nextYearDate(date, now, zone) {
 }
 
 function resolveCandidate(text, start, end, parsed) {
-  const { dateText, timeText, zoneText, iso } = parsed;
+  const { dateText, timeText, zoneText, iso, relativeDay, finvizDay } = parsed;
   const isoZone = iso && (/Z$/i.test(iso) ? { zone: 'UTC', label: 'UTC' } : (() => {
     const suffix = /([+-]\d{2}:?\d{2})$/.exec(iso)?.[1];
     return suffix ? normalizeZone(suffix) : null;
@@ -143,7 +149,19 @@ function resolveCandidate(text, start, end, parsed) {
       instant = Temporal.Instant.from(iso.replace(/([+-]\d{2})(\d{2})$/, '$1:$2').replace(/^([0-9]{4}-[0-9]{2}-[0-9]{2}) /, '$1T'));
     } else {
       const time = parseTime(timeText);
-      if (dateText) {
+      if (relativeDay || finvizDay) {
+        const today = Temporal.Instant.fromEpochMilliseconds(parsed.nowMs).toZonedDateTimeISO(zone.zone).toPlainDate();
+        let date;
+        if (relativeDay) {
+          date = today.add({ days: { yesterday: -1, today: 0, tomorrow: 1 }[relativeDay] });
+        } else {
+          const parts = dateParts(finvizDay);
+          const year = parts.month > today.month || (parts.month === today.month && parts.day > today.day) ? today.year - 1 : today.year;
+          date = Temporal.PlainDate.from({ year, month: parts.month, day: parts.day }, { overflow: 'reject' });
+        }
+        instant = date.toPlainDateTime(time).toZonedDateTime(zone.zone, { disambiguation: 'reject' }).toInstant();
+        if (parsed.finviz) assumedDate = 'Eastern Time assumed for Finviz';
+      } else if (dateText) {
         const d = dateParts(dateText);
         if (!d || d.month < 1 || d.month > 12 || d.day < 1 || d.day > 31) return null;
         const now = Temporal.Instant.fromEpochMilliseconds(parsed.nowMs);
@@ -210,6 +228,29 @@ function scanMatches(text, regex, parser, options, out) {
   }
 }
 
+function scanCalendarDates(text, pattern, getParts, out) {
+  for (const match of text.matchAll(pattern)) {
+    const parts = getParts(match);
+    if (!parts) continue;
+    try {
+      const calendarDate = Temporal.PlainDate.from(parts, { overflow: 'reject' }).toString();
+      out.push({ start: match.index, end: match.index + match[0].length, original: match[0], calendarDate });
+    } catch { /* Ignore invalid calendar dates. */ }
+  }
+}
+
+export function scanFinvizTimestamp(input, nowMs = Date.now()) {
+  const text = input.trim();
+  const match = finvizTimestamp.exec(text);
+  if (!match) return null;
+  const day = match[1].toLowerCase();
+  const date = day === 'today' || day === 'yesterday' ? { relativeDay: day } : { finvizDay: day };
+  const start = input.indexOf(text);
+  return resolveCandidate(input, start, start + text.length, {
+    ...date, timeText: match[2], zoneText: 'ET', nowMs, finviz: true,
+  });
+}
+
 const dateTimePattern = new RegExp(`(${ISO_DATE}|${EN_DATE})\\s+(?:at\\s+)?(?:(${ZONE_PATTERN})\\s+)?(${TIME_PATTERN})(?:\\s+(${ZONE_PATTERN}))?`, 'gi');
 const zonedTimePattern = new RegExp(`(?:\\b(${ZONE_PATTERN})\\s+)?(${TIME_PATTERN})(?:\\s+(${ZONE_PATTERN}))?`, 'gi');
 
@@ -223,11 +264,23 @@ export function scanText(input, options = {}) {
 
   scanMatches(text, ISO_RE, (m) => ({ iso: m[0] }), opts, matches);
 
+  scanMatches(text, relativeTime, (m) => (m[2] || m[4]) && ({
+    relativeDay: m[1].toLowerCase(), timeText: m[3], zoneText: m[4] || m[2],
+  }), opts, matches);
+
   scanMatches(text, dateTimePattern, (m) => {
     const zoneText = m[4] || m[2];
     if (!zoneText) return null;
     return { dateText: m[1], timeText: m[3], zoneText };
   }, opts, matches);
+
+  scanCalendarDates(text, russianCalendarDate, (m) => ({
+    year: +m[3], month: RU_MONTHS.indexOf(m[2].toLowerCase()) + 1, day: +m[1],
+  }), matches);
+  scanCalendarDates(text, dottedDate, (m) => {
+    if (m[3].length === 2 && !options.shortDottedDates) return null;
+    return { year: +m[3] + (m[3].length === 2 ? 2000 : 0), month: +m[2], day: +m[1] };
+  }, matches);
 
   scanMatches(text, zonedTimePattern, (m) => {
     const source = m[0].trim();
@@ -237,7 +290,8 @@ export function scanText(input, options = {}) {
     const beforeChar = text[m.index - 1] || '';
     const prefix = text.slice(Math.max(0, m.index - 48), m.index);
     const dateContext = new RegExp(`(?:\\b\\d{4}-\\d{2}-\\d{2}|${EN_DATE})(?:\\s+at)?(?:\\s+${ZONE_PATTERN})?\\s*$`, 'i');
-    if (/\d/.test(beforeChar) || dateContext.test(prefix)) return null;
+    const relativeContext = /\b(?:today|yesterday|tomorrow)(?:\s*,\s*|\s+(?:at\s+)?)$/i;
+    if (/\d/.test(beforeChar) || dateContext.test(prefix) || relativeContext.test(prefix)) return null;
     return { timeText: found[2], zoneText: found[1] || found[3] };
   }, opts, matches);
 
@@ -277,6 +331,19 @@ function countdownText(deltaMs) {
 export function formatEvent(match, options = {}) {
   const nowMs = Number.isFinite(options.nowMs) ? options.nowMs : Date.now();
   const targetZone = options.targetZone || (() => { try { return Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC'; } catch { return 'UTC'; } })();
+  if (match.calendarDate) {
+    const now = Temporal.Instant.fromEpochMilliseconds(nowMs);
+    let today;
+    try { today = now.toZonedDateTimeISO(targetZone).toPlainDate(); }
+    catch { today = now.toZonedDateTimeISO('UTC').toPlainDate(); }
+    const days = today.until(Temporal.PlainDate.from(match.calendarDate)).days;
+    return {
+      countdown: new Intl.RelativeTimeFormat('en', { numeric: 'auto' }).format(days, 'day'),
+      localDate: match.calendarDate, localTime: '', timeZone: '', sourceLabel: '',
+      assumption: 'Calendar date · time not specified', isoInstant: null,
+      state: days === 0 ? 'now' : days > 0 ? 'future' : 'past',
+    };
+  }
   const deltaMs = match.instantMs - nowMs;
   const state = Math.abs(deltaMs) < 1000 ? 'now' : deltaMs > 0 ? 'future' : 'past';
   const hour12 = options.hour12 === true;

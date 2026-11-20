@@ -26,7 +26,9 @@ The dev build has its own display name and includes the source revision in its v
 
 An undated time refers to its next occurrence; the tooltip shows the assumed date. Explicit past dates show elapsed time. EST and PST are literal fixed offsets; ET and PT follow daylight saving. CST defaults to US Central Standard Time and IST to India; settings allow overrides.
 
-Fields you edit, code samples, hidden text, browser-internal pages, closed shadow roots, and canvas content are excluded. The first release recognizes supported explicit time-zone formats, not arbitrary natural-language dates.
+Dates such as `26 октября 2026 года` and `10.10.2026` are calendar dates with day-level countdowns. On Т—Ж, short dates like `27.10.26` use years 2000–2099. Relative times such as `Today, 8:07 AM ET` use the day in their stated time zone. Finviz headline timestamps without a zone use an explicitly labeled Eastern Time assumption.
+
+Fields you edit, code samples, hidden text, browser-internal pages, closed shadow roots, and canvas content are excluded.
 
 **Reminders · Pro — Soon** marks a planned paid feature. Version 1 does not include reminders, billing, accounts, or notification permissions.
 

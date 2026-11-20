@@ -16,6 +16,12 @@ npm run test:browser
 
 Load `dist/` through Chrome's **Extensions → Developer mode → Load unpacked**. Click the extension icon and enable highlighting to grant website access. Global and per-site switches control scanning.
 
+For testing in the separate Windows Chrome profile, build with `npm run build -- --dev`.
+Publish `out/howlonguntil-dev.zip` as the asset of the GitHub prerelease tagged `dev`.
+The **How Long Until Dev** item in the Kolya launcher downloads that asset into a stable
+folder. Load the folder once, then reload the extension after each update.
+The dev build has its own display name and includes the source revision in its version label.
+
 ## Time assumptions
 
 An undated time refers to its next occurrence; the tooltip shows the assumed date. Explicit past dates show elapsed time. EST and PST are literal fixed offsets; ET and PT follow daylight saving. CST defaults to US Central Standard Time and IST to India; settings allow overrides.
